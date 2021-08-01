@@ -18,7 +18,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTt-HT-L99">
                                 <rect key="frame" x="107" y="100" width="200" height="100"/>
-                                <state key="normal" image="us"/>
+                                <state key="normal" image="france"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qa1-fs-FWL"/>
                                 </connections>
@@ -51,7 +51,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aYZ-vb-JM4"/>
                     <connections>
-                        <outlet property="button1" destination="EaM-zh-tad" id="gKW-W5-jeF"/>
+                        <outlet property="button1" destination="RTt-HT-L99" id="j41-FA-Bqe"/>
                         <outlet property="button2" destination="EaM-zh-tad" id="akw-ZH-SUG"/>
                         <outlet property="button3" destination="RwW-3n-iAZ" id="Ayh-JI-5n0"/>
                     </connections>
@@ -80,6 +80,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="france" width="200" height="100"/>
         <image name="us" width="200" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

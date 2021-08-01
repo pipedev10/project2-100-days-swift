@@ -8,7 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let TOTALTOANSWER = 10
+    
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
@@ -16,6 +17,7 @@ class ViewController: UIViewController {
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
+    var totalAnswer = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +62,7 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
-        title = countries[correctAnswer].uppercased()
+        title = "\(countries[correctAnswer].uppercased()) - score: \(score)"
     }
 
 
@@ -71,19 +73,29 @@ class ViewController: UIViewController {
             title = "Correct"
             score += 1
         } else{
-            title = "Wrong"
+            title = "Wrong! That’s the flag of \(countries[correctAnswer].uppercased())"
             score -= 1
         }
-        
-        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
+        totalAnswer += 1
         /*
          my solution
          ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: {action in
             self.askQuestion()
         }))
          */
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
-        present(ac, animated: true)
+        
+        if(totalAnswer == TOTALTOANSWER) {
+            let alertGameFinished = UIAlertController(title: title, message: "Game finished your total score is \(score).", preferredStyle: .alert)
+            alertGameFinished.addAction(UIAlertAction(title: "start from the beginning", style: .default, handler: { action in
+                self.score = 0
+                self.askQuestion()
+            }))
+            present(alertGameFinished, animated: true)
+        }else{
+            let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+            present(ac, animated: true)
+        }
         
     }
     
