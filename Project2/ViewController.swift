@@ -90,6 +90,9 @@ class ViewController: UIViewController {
                 self.score = 0
                 self.askQuestion()
             }))
+            alertGameFinished.addAction(UIAlertAction(title: "shared result?", style: .default, handler: { action in
+                self.shareResult()
+            }))
             present(alertGameFinished, animated: true)
         }else{
             let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
@@ -97,6 +100,14 @@ class ViewController: UIViewController {
             present(ac, animated: true)
         }
         
+    }
+    
+    func shareResult(){
+        let vc = UIActivityViewController(activityItems: ["Game finished your total score is \(score)."], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+        self.score = 0
+        self.askQuestion()
     }
     
 }
